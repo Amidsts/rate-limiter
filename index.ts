@@ -13,11 +13,9 @@ const ratelimiter = new RateLimiter({
 
 
 app.use( (req: Request, res: Response, next: NextFunction) => {
-    console.log("gvtw", " ", req.socket.remoteAddress);
     
-    ratelimiter.consume(req.ip)
+    ratelimiter.consume(undefined)
     .then( e => {
-
         // console.log("consume works: ", e);
         next()
     })
